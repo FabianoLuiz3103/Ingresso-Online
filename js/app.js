@@ -15,24 +15,22 @@ function comprar() {
 
     switch (ingresso) {
         case 'pista':
-            if (!isNotDisponivel(vlPista, ingresso) && !isQuantidadeInvalid(vlPista, quantidade, ingresso)) {
-                vlPista = vlPista - quantidade;
-                tagPista.textContent = vlPista
-            }
-            ;
+            operacaoCompra(vlPista, quantidade, tagPista, ingresso);
             break;
         case 'superior':
-            if (!isNotDisponivel(vlSuperior, ingresso) && !isQuantidadeInvalid(vlSuperior, quantidade, ingresso)) {
-            vlSuperior = vlSuperior - quantidade;
-            tagSuperior.textContent = vlSuperior;
-            }
+            operacaoCompra(vlSuperior, quantidade, tagSuperior, ingresso);
             break;
         case 'inferior':
-            if (!isNotDisponivel(vlInferior, ingresso) && !isQuantidadeInvalid(vlInferior, quantidade, ingresso)) {
-            vlInferior = vlInferior - quantidade;
-            tagInferior.textContent = vlInferior;
-            }
+           operacaoCompra(vlInferior, quantidade, tagInferior, ingresso);
             break;
+    }
+}
+
+function operacaoCompra(vlAtual, vlInformado, tagHtml, tipo){
+
+    if (!isNotDisponivel(vlAtual, tipo) && !isQuantidadeInvalid(vlAtual, vlInformado, tipo)) {
+        vlAtual = vlAtual - vlInformado;
+        tagHtml.textContent = vlAtual;
     }
 }
 
